@@ -1,0 +1,1 @@
+#  i18n: This folder stores the .csv files for module translator. Eg: en_US.csv, de_DE.csv.

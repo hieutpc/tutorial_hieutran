@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tutorial\HieuTran\Api\Data\FAQInterface" type="Tutorial\HieuTran\Model\FAQ" />
+
+    <virtualType name="Tutorial\HieuTran\Model\Resource\FAQ\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">faq_table</argument>
+            <argument name="resourceModel" xsi:type="string">Tutorial\HieuTran\Model\Resource\FAQ</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="faq_data_source" xsi:type="string">Tutorial\HieuTran\Model\Resource\FAQ\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
+
+<!-- The di.xml file configures which dependencies are injected by the object manager. You can also specify sensitive configuration settings using di.xml. -->

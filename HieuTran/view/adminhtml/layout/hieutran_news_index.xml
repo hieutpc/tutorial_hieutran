@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!-- We will need a layout file to connect with Grid Block and render the grid. This file is used to declare grid container block -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+   <update handle="formkey"/>
+   <update handle="hieutran_news_grid_block"/>
+   <body>
+       <referenceContainer name="content">
+           <block class="Tutorial\HieuTran\Block\Adminhtml\News" 
+               name="tutorial_hieutran_news.grid.container" />       <!--name: is the required attribute and is used to identify a block as a reference -->
+       </referenceContainer>
+   </body>
+</page>

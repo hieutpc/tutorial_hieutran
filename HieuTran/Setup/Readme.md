@@ -1,0 +1,1 @@
+# Setup: This folder stores the files which are used to create tables or insert data to the database. It is just like  the sql folder in Magento 1.x.
