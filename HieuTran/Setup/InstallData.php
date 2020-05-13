@@ -16,7 +16,7 @@ class InstallData implements InstallDataInterface
         $setup->startSetup();
 
         // Get tutorial_hieutran table
-        $tableName = $setup->getTable('tutorial_hieutran_post');
+        $tableName = $setup->getTable('tt_hieutran_records');
         // Check if the table already exists
         if ($setup->getConnection()->isTableExists($tableName) == true) {
             // Declare data
@@ -48,4 +48,3 @@ class InstallData implements InstallDataInterface
         $setup->endSetup();
     }
 }
-

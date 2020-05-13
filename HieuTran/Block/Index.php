@@ -1,9 +1,6 @@
 <?php
-// Every block in Magento 2 must extend from Magento\Framework\View\Element\Template
-// The Block file should contain all the __view logic required__, it should not contain any kind of html or css. Block file are supposed to have all application view logic.
 
 namespace Tutorial\HieuTran\Block;
-
 
 use Magento\Framework\View\Element\Template\Context;
 use Tutorial\HieuTran\Model\FAQFactory;
@@ -11,6 +8,7 @@ use Tutorial\HieuTran\Model\FAQFactory;
 /**
  * Test List block
  */
+
 class Index extends \Magento\Framework\View\Element\Template
 {
     protected $_faqFactory;
@@ -30,8 +28,8 @@ class Index extends \Magento\Framework\View\Element\Template
         if ($this->getFAQCollection()) {
             $pager = $this->getLayout()->createBlock(
                 'Magento\Theme\Block\Html\Pager',
-                'hieutran.faq.pager'
-            )->setAvailableLimit([5 => 5, 10 => 10, 15 => 15])->setShowPerPage(true)->setCollection(
+                'tutorial.faq.pager'
+            )->setAvailableLimit([5=>5,10=>10,15=>15])->setShowPerPage(true)->setCollection(
                 $this->getFAQCollection()
             );
             $this->setChild('pager', $pager);
@@ -47,7 +45,7 @@ class Index extends \Magento\Framework\View\Element\Template
 
         $faq = $this->_faqFactory->create();
         $collection = $faq->getCollection();
-        $collection->addFieldToFilter('Status', '1'); // if you want to use filter
+        $collection->addFieldToFilter('Status','1'); // if you want to use filter
         //$collection->setOrder('test_id','ASC'); // if you want to set collection order
         $collection->setPageSize($pageSize);
         $collection->setCurPage($page);

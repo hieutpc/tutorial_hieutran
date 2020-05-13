@@ -1,8 +1,8 @@
 <?php
-namespace Tutorial\HieuTran\Model\Resource\FAQ;
+namespace Tutorial\HieuTran\Model\ResourceModel\FAQ;
 
 /**
- * Factory class for @see \Tutorial\Grid\Model\Grid
+ * Factory class for @see \Tutorial\HieuTran\Model\FAQ
  */
 class CollectionFactory
 {
@@ -28,7 +28,7 @@ class CollectionFactory
      */
     public function __construct(
         \Magento\Framework\ObjectManagerInterface $objectManager,
-        $instanceName = '\\Tutorial\\HieuTran\\Model\\Resource\\FAQ\\Collection'
+        $instanceName = '\\Tutorial\HieuTran\\Model\\ResourceModel\\FAQ\\Collection'
     ) {
         $this->_objectManager = $objectManager;
         $this->_instanceName = $instanceName;
@@ -38,7 +38,7 @@ class CollectionFactory
      * Create class instance with specified parameters
      *
      * @param array $data
-     * @return \Tutorial\HieuTran\Model\Resource\FAQ\Collection
+     * @return \Tutorial\HieuTran\Model\ResourceModel\FAQ\Collection
      */
     public function create(array $data = [])
     {

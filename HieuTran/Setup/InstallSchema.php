@@ -1,6 +1,6 @@
 <?php
-// This file will execute only one time when install the module. If you installed the module before, you will need to upgrade module and write the table create code to the UpgradeSchema.php
-// in that folder and change attribute setup_version greater than current setup version in module.xml at app/code/Mageplaza/HelloWorld/etc/module.xml.
+// This file will execute only one time when install the module. If you installed the module before, you will need to upgrade module and write the table create code to the UpgradeSchema.php in that folder 
+// and change attribute setup_version greater than current setup version in module.xml at app/code/Tutorial/HieuTran/etc/module.xml.
 
 namespace Tutorial\HieuTran\Setup;
 
@@ -11,10 +11,11 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
     {
         $installer = $setup;
         $installer->startSetup();
-        // Our table's name is: "tutorial_hieutran_post"
-        if (!$installer->tableExists('tutorial_hieutran_post')) {
+
+        // Our table's name is: "tt_hieutran_records"
+        if (!$installer->tableExists('tt_hieutran_records')) {
             $table = $installer->getConnection()->newTable(
-                $installer->getTable('tutorial_hieutran_post')
+                $installer->getTable('tt_hieutran_records')
             )
                 ->addColumn(
                     'id',
@@ -71,16 +72,16 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 
             $installer->getConnection()->createTable($table);
 
-            $installer->getConnection()->addIndex(
-                $installer->getTable('tutorial_hieutran_post'),
-                $setup->getIdxName(
-                    $installer->getTable('tutorial_hieutran_post'),
-                    ['title', 'description', 'image', 'status'],
-                    \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
-                ),
-                ['title', 'description', 'image', 'status'],
-                \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
-            );
+            // $installer->getConnection()->addIndex(
+            //     $installer->getTable('tutorial_hieutran_post'),
+            //     $setup->getIdxName(
+            //         $installer->getTable('tutorial_hieutran_post'),
+            //         ['title', 'description', 'image'],
+            //         \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+            //     ),
+            //     ['title', 'description', 'image'],
+            //     \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+            // );
         }
         $installer->endSetup();
     }

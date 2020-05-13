@@ -1,20 +1,19 @@
 <?php
-
 namespace Tutorial\HieuTran\Model;
 
 use Tutorial\HieuTran\Api\Data\FAQInterface;
 
 class FAQ extends \Magento\Framework\Model\AbstractModel implements FAQInterface
 {
-    const CACHE_TAG = 'tutorial_hieutran_post';
+    const CACHE_TAG = 'tutorial_hieutran_faq';
 
-    protected $_cacheTag = 'tutorial_hieutran_post';
+    protected $_cacheTag = 'tutorial_hieutran_faq';
 
-    protected $_eventPrefix = 'tutorial_hieutran_post';
+    protected $_eventPrefix = 'tutorial_hieutran_faq';
 
     protected function _construct()
     {
-        $this->_init('Tutorial\HieuTran\Model\Resource\FAQ');
+        $this->_init('Tutorial\HieuTran\Model\ResourceModel\FAQ');
     }
 
     public function getId()
@@ -85,3 +84,39 @@ class FAQ extends \Magento\Framework\Model\AbstractModel implements FAQInterface
         return $this->setData(self::UPDATE_TIME, $time);
     }
 }
+
+
+
+
+
+// // old but works
+// class FAQ extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
+// {
+//     const CACHE_TAG = 'tutorial_hieutran_faq';
+
+//     protected $_cacheTag = 'tutorial_hieutran_faq';
+
+//     protected $_eventPrefix = 'tutorial_hieutran_faq';
+
+//     protected function _construct()
+//     {
+//         $this->_init('Tutorial\HieuTran\Model\ResourceModel\FAQ');
+//     }
+
+//     public function getIdentities()
+//     {
+//         return [self::CACHE_TAG . '_' . $this->getId()];
+//     }
+
+//     public function getDefaultValues()
+//     {
+//         $values = [];
+
+//         return $values;
+//     }
+// }
+
+
+// $_eventPrefix    - a prefix for events to be triggered
+// $_eventObject    - a object name when access in event
+// $_cacheTag       - a unique identifier for use within caching

@@ -1,16 +1,36 @@
 <?xml version="1.0"?>
 
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+<!-- new format -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tutorial_HieuTran::main_menu" title="Simple News" module="Tutorial_HieuTran" sortOrder="20" resource="Tutorial_HieuTran::hieutran" />
-        <add id="Tutorial_HieuTran::add_news" title="Add News" module="Tutorial_HieuTran" sortOrder="1" parent="Tutorial_HieuTran::main_menu" action="hieutran/news/new" resource="Tutorial_HieuTran::manage_news" />
-        <add id="Tutorial_HieuTran::manage_news" title="Manage News" module="Tutorial_HieuTran" sortOrder="2" parent="Tutorial_HieuTran::main_menu" action="hieutran/news/index" resource="Tutorial_HieuTran::manage_news" />
-        <add id="Tutorial_HieuTran::configuration" title="Configurations" module="Tutorial_HieuTran" sortOrder="3" parent="Tutorial_HieuTran::main_menu" action="adminhtml/system_config/edit/section/hieutran" resource="Tutorial_HieuTran::configuration" />
-
-        <add id="Tutorial_HieuTran::faq_list" title="FAQ" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::hieutran"/>
-        <add id="Tutorial_HieuTran::add_row" title="FAQ Manager" module="Tutorial_HieuTran" sortOrder="20" parent="Tutorial_HieuTran::faq_list" action="hieutran/faq/index" resource="Tutorial_HieuTran::add_row"/>
+        <add id="Tutorial_HieuTran::manager" title="FAQs" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::manager" />
+        <add id="Tutorial_HieuTran::add_row" title="FAQ Manager" module="Tutorial_HieuTran" sortOrder="20" parent="Tutorial_HieuTran::manager" action="hieutran/faq" resource="Tutorial_HieuTran::add_row"/>
     </menu>
 </config>
 
-<!-- The resource attribute is used to defined the ACL rule which the admin user must have in order to see and access this menu -->
-<!-- The action attribute will define the url of the page which this menu link to. As we talk above, the url will be followed this format {router_name}{controller_folder}{action_name}. -->
+
+<!-- old but works -->
+<!-- <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tutorial_HieuTran::faq_menu" title="FAQ" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::hieutran"/>
+        <add id="Tutorial_HieuTran::add_row" title="FAQ Manager" module="Tutorial_HieuTran" sortOrder="1" parent="Tutorial_HieuTran::faq_menu" action="hieutran/faq" resource="Tutorial_HieuTran::add_row"/>
+        <add id="Tutorial_HieuTran::configuration" title="Configurations" module="Tutorial_HieuTran" sortOrder="2" parent="Tutorial_HieuTran::faq_menu" action="adminhtml/system_config/edit/section/hieutran" resource="Tutorial_HieuTran::configuration" />
+    </menu>
+</config> -->
+
+<!-- So it works for both {router_name}/{controller_folder}/{action_name} or {router_name}/{controller_folder} cause index.php is the default entry (action) -->
+
+<!-- Attributes -->
+<!-- 'resource'    is used to defined the ACL rule which the admin user must have in order to see and access this menu -->
+<!-- 'action'      will define the url of the page which this menu link to. As we talk above, the url will be followed this format {router_name}{controller_folder}{action_name}. -->
+<!-- 'parent'      is an Id of other menu node. It will tell Magento that this menu is a child of another menu -->
+<!-- 'id'          is the identifier for this note. It’s a unique string and should follow the format: {Vendor_ModuleName}::{menu_description}. -->
+
+<!-- Example -->
+<!-- 
+<add id="Tutorial_HieuTran::main_menu" title="Simple News" module="Tutorial_HieuTran" sortOrder="20" resource="Tutorial_HieuTran::hieutran" />
+<add id="Tutorial_HieuTran::add_news" title="Add News" module="Tutorial_HieuTran" sortOrder="1" parent="Tutorial_HieuTran::main_menu" action="hieutran/news/new" resource="Tutorial_HieuTran::manage_news" />
+<add id="Tutorial_HieuTran::manage_news" title="Manage News" module="Tutorial_HieuTran" sortOrder="2" parent="Tutorial_HieuTran::main_menu" action="hieutran/news/index" resource="Tutorial_HieuTran::manage_news" />
+<add id="Tutorial_HieuTran::configuration" title="Configurations" module="Tutorial_HieuTran" sortOrder="3" parent="Tutorial_HieuTran::main_menu" action="adminhtml/system_config/edit/section/hieutran" resource="Tutorial_HieuTran::configuration" />
+ -->
+

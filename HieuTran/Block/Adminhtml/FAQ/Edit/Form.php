@@ -5,6 +5,7 @@ namespace Tutorial\HieuTran\Block\Adminhtml\FAQ\Edit;
 /**
  * Adminhtml Add New Row Form.
  */
+
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
     /**
@@ -36,6 +37,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      *
      * @return $this
      */
+
     protected function _prepareForm()
     {
         $dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
@@ -49,8 +51,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ],
             ]
         );
+        
+        // TrungHN
+        $form->setHtmlIdPrefix('hieutran_');
+        $form->setFieldNameSuffix('hieutran');
+        // TrungHN
 
-        $form->setHtmlIdPrefix('wkgrid_');
         if ($model->getEntityId()) {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
@@ -84,22 +90,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'editor',
             [
                 'name' => 'description',
-                'label' => __('Description'),
-                'style' => 'height:10em;',
+                'label' => __('Content'),
+                'style' => 'height:36em;',
                 'required' => true,
                 'config' => $wysiwygConfig,
-            ]
-        );
-
-        $fieldset->addField(
-            'image',
-            'image',
-            [
-                'name' => 'image',
-                'label' => __('Image'),
-                'note' => 'Allow image type: jpg, jpeg, png',
-                'config' => $wysiwygConfig,
-
             ]
         );
 

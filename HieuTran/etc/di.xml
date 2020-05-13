@@ -1,21 +1,36 @@
 <?xml version="1.0"?>
 
+<!-- Dependency Injection  -->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Tutorial\HieuTran\Api\Data\FAQInterface" type="Tutorial\HieuTran\Model\FAQ" />
 
-    <virtualType name="Tutorial\HieuTran\Model\Resource\FAQ\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="Tutorial\HieuTran\Model\ResourceModel\FAQ\FAQ\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">faq_table</argument>
-            <argument name="resourceModel" xsi:type="string">Tutorial\HieuTran\Model\Resource\FAQ</argument>
+            <argument name="mainTable" xsi:type="string">tt_hieutran_records</argument>
+            <argument name="resourceModel" xsi:type="string">Tutorial\HieuTran\Model\ResourceModel\FAQ</argument>
         </arguments>
     </virtualType>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="faq_data_source" xsi:type="string">Tutorial\HieuTran\Model\Resource\FAQ\Grid\Collection</item>
+                <item name="hieutran_record_faq_list_data_source" xsi:type="string">Tutorial\HieuTran\Model\ResourceModel\FAQ\FAQ\Collection</item>
+                <!-- <item name="hieutran_record_faq_list_data_source" xsi:type="string">Tutorial\HieuTran\Model\ResourceModel\FAQ\Collection</item> Error!!!-->
+            </argument>
+        </arguments>
+    </type>
+    <type name="Tutorial\HieuTran\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Tutorial\HieuTran\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">customLogHandler</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Tutorial\HieuTran\Logger\Handler</item>
             </argument>
         </arguments>
     </type>
 </config>
 
-<!-- The di.xml file configures which dependencies are injected by the object manager. You can also specify sensitive configuration settings using di.xml. -->

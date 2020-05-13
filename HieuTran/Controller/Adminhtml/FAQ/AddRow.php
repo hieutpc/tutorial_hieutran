@@ -2,20 +2,27 @@
 
 namespace Tutorial\HieuTran\Controller\Adminhtml\FAQ;
 
-use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Ui\Component\MassAction\Filter;
-use Tutorial\HieuTran\Model\Resource\FAQ\CollectionFactory;
 
-class AddRow extends Action
+class AddRow extends \Magento\Backend\App\Action
 {
+    /**
+     * @var \Magento\Framework\Registry
+     */
     private $coreRegistry;
 
+    /**
+     * @var \Tutorial\HieuTran\Model\FAQFactory
+     */
     private $faqFactory;
 
+    /**
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\Registry $coreRegistry,
+     * @param \Tutorial\HieuTran\Model\FAQFactory $faqFactory
+     */
     public function __construct(
-        Action\Context $context,
+        \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
         \Tutorial\HieuTran\Model\FAQFactory $faqFactory
     ) {
@@ -25,7 +32,8 @@ class AddRow extends Action
     }
 
     /**
-     * @inheritDoc
+     * Mapped FAQ List page.
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {
@@ -35,15 +43,16 @@ class AddRow extends Action
         if ($rowId) {
             $rowData = $rowData->load($rowId);
             $rowTitle = $rowData->getTitle();
-            if ($rowData->getEntityId()) {
-                $this->messageManager->addErrorMessage(__('Row data no longer exist'));
+            if (!$rowData->getEntityId()) {
+                $this->messageManager->addError(__('row data no longer exist.'));
                 $this->_redirect('hieutran/faq/rowdata');
                 return;
             }
         }
+
         $this->coreRegistry->register('row_data', $rowData);
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $title = $rowId ? __('Edit row data') . $rowTitle : __('Add row data');
+        $title = $rowId ? __('Edit Row Data ') . $rowTitle : __('Add Row Data');
         $resultPage->getConfig()->getTitle()->prepend($title);
         return $resultPage;
     }
@@ -51,19 +60,5 @@ class AddRow extends Action
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Tutorial_HieuTran::add_row');
-    }
-
-    /**
-     * Get form action URL.
-     *
-     * @return string
-     */
-    public function getFormActionUrl()
-    {
-        if ($this->hasFormActionUrl()) {
-            return $this->getData('form_action_url');
-        }
-
-        return $this->getUrl('*/*/save');
     }
 }

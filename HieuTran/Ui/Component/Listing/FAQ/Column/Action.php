@@ -63,6 +63,7 @@ class Action extends Column
                 }
             }
         }
+
         return $dataSource;
     }
 }

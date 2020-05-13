@@ -2,8 +2,21 @@
     <body>
         <referenceContainer name="content">
             <!-- here we call our ui component of grid-->
-            <uiComponent name="hieutran_faq_listing"/>
-
+            <uiComponent name="hieutran_record_faq_list"/>
         </referenceContainer>
     </body>
 </page>
+
+<!-- <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+    // In this layout file, we declare an uiComponent for the content of this page.
+    
+    <update handle="styles"/>
+
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="tutorial_hieutran_faq_listing"/>
+        </referenceContainer>
+    </body>
+</page> -->
+
