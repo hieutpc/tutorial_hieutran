@@ -1,6 +1,6 @@
 <?php
 
-namespace Tutorial\HieuTran\Ui\Component\Listing\FAQ\Column;
+namespace Tutorial\HieuTran\Ui\Component\Listing\Faq\Column;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -52,11 +52,11 @@ class Action extends Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
                 $name = $this->getData('name');
-                if (isset($item['id'])) {
+                if (isset($item['entity_id'])) {
                     $item[$name]['edit'] = [
                         'href' => $this->_urlBuilder->getUrl(
                             $this->_editUrl,
-                            ['id' => $item['id']]
+                            ['id' => $item['entity_id']]
                         ),
                         'label' => __('Edit'),
                     ];

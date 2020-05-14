@@ -1,6 +1,6 @@
 <?php
 
-namespace Tutorial\HieuTran\Block\Adminhtml\FAQ;
+namespace Tutorial\HieuTran\Block\Adminhtml\Faq;
 
 class AddRow extends \Magento\Backend\Block\Widget\Form\Container
 {
@@ -31,8 +31,8 @@ class AddRow extends \Magento\Backend\Block\Widget\Form\Container
     protected function _construct()
     {
         $this->_objectId = 'row_id';
-        $this->_blockGroup = 'Tutorial_HieuTran';
-        $this->_controller = 'adminhtml_faq';
+        $this->_blockGroup = 'Tutorial_HieuTran'; //$_blockGroup is your module's name.
+        $this->_controller = 'adminhtml_faq'; //$_controller is the path to your grid block.
         parent::_construct();
         if ($this->_isAllowedAction('Tutorial_HieuTran::add_row')) {
             $this->buttonList->update('save', 'label', __('Save'));
@@ -64,17 +64,17 @@ class AddRow extends \Magento\Backend\Block\Widget\Form\Container
         return $this->_authorization->isAllowed($resourceId);
     }
 
-    // /**
-    //  * Get form action URL.
-    //  *
-    //  * @return string
-    //  */
-    // public function getFormActionUrl()
-    // {
-    //     if ($this->hasFormActionUrl()) {
-    //         return $this->getData('form_action_url');
-    //     }
+    /**
+     * Get form action URL.
+     *
+     * @return string
+     */
+    public function getFormActionUrl()
+    {
+        if ($this->hasFormActionUrl()) {
+            return $this->getData('form_action_url');
+        }
 
-    //     return $this->getUrl('*/*/save');
-    // }
+        return $this->getUrl('*/*/save');
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tutorial\HieuTran\Controller\Adminhtml\FAQ;
+namespace Tutorial\HieuTran\Controller\Adminhtml\Faq;
 
 use Magento\Framework\Controller\ResultFactory;
 
@@ -12,19 +12,19 @@ class AddRow extends \Magento\Backend\App\Action
     private $coreRegistry;
 
     /**
-     * @var \Tutorial\HieuTran\Model\FAQFactory
+     * @var \Tutorial\HieuTran\Model\FaqFactory
      */
     private $faqFactory;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Registry $coreRegistry,
-     * @param \Tutorial\HieuTran\Model\FAQFactory $faqFactory
+     * @param \Tutorial\HieuTran\Model\FaqFactory $faqFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
-        \Tutorial\HieuTran\Model\FAQFactory $faqFactory
+        \Tutorial\HieuTran\Model\FaqFactory $faqFactory
     ) {
         parent::__construct($context);
         $this->coreRegistry = $coreRegistry;
@@ -32,7 +32,7 @@ class AddRow extends \Magento\Backend\App\Action
     }
 
     /**
-     * Mapped FAQ List page.
+     * Mapped Faq List page.
      * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()

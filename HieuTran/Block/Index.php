@@ -3,7 +3,7 @@
 namespace Tutorial\HieuTran\Block;
 
 use Magento\Framework\View\Element\Template\Context;
-use Tutorial\HieuTran\Model\FAQFactory;
+use Tutorial\HieuTran\Model\FaqFactory;
 
 /**
  * Test List block
@@ -15,7 +15,7 @@ class Index extends \Magento\Framework\View\Element\Template
 
     public function __construct(
         Context $context,
-        FAQFactory $faqFactory
+        FaqFactory $faqFactory
     ) {
         $this->_faqFactory = $faqFactory;
         parent::__construct($context);
@@ -25,20 +25,20 @@ class Index extends \Magento\Framework\View\Element\Template
     {
         $this->pageConfig->getTitle()->set(__('TABLE '));
 
-        if ($this->getFAQCollection()) {
+        if ($this->getFaqCollection()) {
             $pager = $this->getLayout()->createBlock(
                 'Magento\Theme\Block\Html\Pager',
                 'tutorial.faq.pager'
             )->setAvailableLimit([5=>5,10=>10,15=>15])->setShowPerPage(true)->setCollection(
-                $this->getFAQCollection()
+                $this->getFaqCollection()
             );
             $this->setChild('pager', $pager);
-            $this->getFAQCollection()->load();
+            $this->getFaqCollection()->load();
         }
         return parent::_prepareLayout();
     }
 
-    public function getFAQCollection()
+    public function getFaqCollection()
     {
         $page = ($this->getRequest()->getParam('p')) ? $this->getRequest()->getParam('p') : 1;
         $pageSize = ($this->getRequest()->getParam('limit')) ? $this->getRequest()->getParam('limit') : 5;

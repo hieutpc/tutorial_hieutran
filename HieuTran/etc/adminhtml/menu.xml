@@ -3,8 +3,8 @@
 <!-- new format -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tutorial_HieuTran::manager" title="FAQs" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::manager" />
-        <add id="Tutorial_HieuTran::add_row" title="FAQ Manager" module="Tutorial_HieuTran" sortOrder="20" parent="Tutorial_HieuTran::manager" action="hieutran/faq" resource="Tutorial_HieuTran::add_row"/>
+        <add id="Tutorial_HieuTran::manager" title="Faqs" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::manager" />
+        <add id="Tutorial_HieuTran::add_row" title="Faq Manager" module="Tutorial_HieuTran" sortOrder="20" parent="Tutorial_HieuTran::manager" action="hieutran/faq" resource="Tutorial_HieuTran::add_row"/>
     </menu>
 </config>
 
@@ -12,8 +12,8 @@
 <!-- old but works -->
 <!-- <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tutorial_HieuTran::faq_menu" title="FAQ" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::hieutran"/>
-        <add id="Tutorial_HieuTran::add_row" title="FAQ Manager" module="Tutorial_HieuTran" sortOrder="1" parent="Tutorial_HieuTran::faq_menu" action="hieutran/faq" resource="Tutorial_HieuTran::add_row"/>
+        <add id="Tutorial_HieuTran::faq_menu" title="Faq" module="Tutorial_HieuTran" sortOrder="10" resource="Tutorial_HieuTran::hieutran"/>
+        <add id="Tutorial_HieuTran::add_row" title="Faq Manager" module="Tutorial_HieuTran" sortOrder="1" parent="Tutorial_HieuTran::faq_menu" action="hieutran/faq" resource="Tutorial_HieuTran::add_row"/>
         <add id="Tutorial_HieuTran::configuration" title="Configurations" module="Tutorial_HieuTran" sortOrder="2" parent="Tutorial_HieuTran::faq_menu" action="adminhtml/system_config/edit/section/hieutran" resource="Tutorial_HieuTran::configuration" />
     </menu>
 </config> -->

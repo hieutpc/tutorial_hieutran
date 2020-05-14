@@ -1,6 +1,6 @@
 <?php
 
-namespace Tutorial\HieuTran\Controller\Adminhtml\FAQ;
+namespace Tutorial\HieuTran\Controller\Adminhtml\Faq;
 
 class Index extends \Magento\Backend\App\Action
 {
@@ -30,7 +30,7 @@ class Index extends \Magento\Backend\App\Action
     {
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Tutorial_HieuTran::faq_list');
-        $resultPage->getConfig()->getTitle()->prepend(__('FAQ List'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Faq List'));
         return $resultPage;
     }
 
@@ -62,7 +62,7 @@ class Index extends \Magento\Backend\App\Action
 //     {
 //         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
 //         $resultPage = $this->resultPageFactory->create();
-//         $resultPage->getConfig()->getTitle()->prepend((__('FAQs')));
+//         $resultPage->getConfig()->getTitle()->prepend((__('Faqs')));
 
 //         return $resultPage;
 //     }

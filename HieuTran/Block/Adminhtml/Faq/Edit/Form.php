@@ -1,6 +1,6 @@
 <?php
 
-namespace Tutorial\HieuTran\Block\Adminhtml\FAQ\Edit;
+namespace Tutorial\HieuTran\Block\Adminhtml\Faq\Edit;
 
 /**
  * Adminhtml Add New Row Form.
@@ -37,7 +37,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      *
      * @return $this
      */
-
     protected function _prepareForm()
     {
         $dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
@@ -52,17 +51,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
         
-        // TrungHN
-        $form->setHtmlIdPrefix('hieutran_');
-        $form->setFieldNameSuffix('hieutran');
-        // TrungHN
-
+        $form->setHtmlIdPrefix('wkgrid_');
         if ($model->getEntityId()) {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
                 ['legend' => __('Edit Row Data'), 'class' => 'fieldset-wide']
             );
-            $fieldset->addField('id', 'hidden', ['name' => 'id']);
+            $fieldset->addField('entity_id', 'hidden', ['name' => 'entity_id']);
         } else {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
@@ -90,7 +85,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'editor',
             [
                 'name' => 'description',
-                'label' => __('Content'),
+                'label' => __('Description'),
                 'style' => 'height:36em;',
                 'required' => true,
                 'config' => $wysiwygConfig,

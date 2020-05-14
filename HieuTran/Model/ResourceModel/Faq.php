@@ -2,14 +2,14 @@
 namespace Tutorial\HieuTran\Model\ResourceModel;
 
 /**
- * HieuTran FAQ mysql resource.
+ * HieuTran Faq mysql resource.
  */
-class FAQ extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Faq extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * @var string
      */
-    protected $_idFieldName = 'id';
+    protected $_idFieldName = 'entity_id';
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
      */
@@ -36,13 +36,13 @@ class FAQ extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('tt_hieutran_records', 'id');
+        $this->_init('tt_hieutran_records', 'entity_id');
     }
 }
 
 
 
-// class FAQ extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+// class Faq extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 // {
 
 //     public function __construct(

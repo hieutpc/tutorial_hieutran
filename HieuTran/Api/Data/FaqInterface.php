@@ -2,22 +2,23 @@
 
 namespace Tutorial\HieuTran\Api\Data;
 
-interface FAQInterface
+interface FaqInterface
 {
     /**
      * Constants for keys of data array. Identical to the name of the getter in snake case.
      */
 
-    const ID = 'id';
+    const ID = 'entity_id';
     const TITLE = 'title';
     const DESCRIPTION = 'description';
     const IMAGE = 'image';
     const STATUS = 'status';
-    const CREATE_TIME = 'create_time';
-    const UPDATE_TIME = 'update_time';
+    // Bug1
+    const CREATE_TIME = 'created_at';
+    const UPDATE_TIME = 'updated_at';   
 
     public function getId();
-    public function setId($id);
+    public function setId($entity_id);
 
     public function getTitle();
     public function setTitle($title);

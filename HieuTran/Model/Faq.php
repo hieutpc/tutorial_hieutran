@@ -1,19 +1,19 @@
 <?php
 namespace Tutorial\HieuTran\Model;
 
-use Tutorial\HieuTran\Api\Data\FAQInterface;
+use Tutorial\HieuTran\Api\Data\FaqInterface;
 
-class FAQ extends \Magento\Framework\Model\AbstractModel implements FAQInterface
+class Faq extends \Magento\Framework\Model\AbstractModel implements FaqInterface
 {
-    const CACHE_TAG = 'tutorial_hieutran_faq';
+    const CACHE_TAG = 'tt_hieutran_records';
 
-    protected $_cacheTag = 'tutorial_hieutran_faq';
+    protected $_cacheTag = 'tt_hieutran_records';
 
-    protected $_eventPrefix = 'tutorial_hieutran_faq';
+    protected $_eventPrefix = 'tt_hieutran_records';
 
     protected function _construct()
     {
-        $this->_init('Tutorial\HieuTran\Model\ResourceModel\FAQ');
+        $this->_init('Tutorial\HieuTran\Model\ResourceModel\Faq');
     }
 
     public function getId()
@@ -90,7 +90,7 @@ class FAQ extends \Magento\Framework\Model\AbstractModel implements FAQInterface
 
 
 // // old but works
-// class FAQ extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
+// class Faq extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
 // {
 //     const CACHE_TAG = 'tutorial_hieutran_faq';
 
@@ -100,7 +100,7 @@ class FAQ extends \Magento\Framework\Model\AbstractModel implements FAQInterface
 
 //     protected function _construct()
 //     {
-//         $this->_init('Tutorial\HieuTran\Model\ResourceModel\FAQ');
+//         $this->_init('Tutorial\HieuTran\Model\ResourceModel\Faq');
 //     }
 
 //     public function getIdentities()
