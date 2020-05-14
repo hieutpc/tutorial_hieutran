@@ -50,9 +50,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ],
             ]
         );
-        
+
         $form->setHtmlIdPrefix('wkgrid_');
-        if ($model->getEntityId()) {
+        // if ($model->getEntityId()) {
+        if ($model->getId()) {
             $fieldset = $form->addFieldset(
                 'base_fieldset',
                 ['legend' => __('Edit Row Data'), 'class' => 'fieldset-wide']

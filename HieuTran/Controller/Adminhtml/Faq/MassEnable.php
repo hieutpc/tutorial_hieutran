@@ -7,10 +7,10 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Tutorial\HieuTran\Model\ResourceModel\Faq\CollectionFactory;
 
-class MassDelete extends \Magento\Backend\App\Action
+class MassEnable extends \Magento\Backend\App\Action
 {
     /**
-     * Massactions filter.
+     * Massactions filter.​_
      * @var Filter
      */
     protected $_filter;
@@ -42,15 +42,18 @@ class MassDelete extends \Magento\Backend\App\Action
     public function execute()
     {
         $collection = $this->_filter->getCollection($this->_collectionFactory->create());
-        $recordDeleted = 0;
-        foreach ($collection->getItems() as $record) {
-            // $record->setId($record->getEntityId());
-            $record->setId($record->getId());
-            $record->delete();
-            $recordDeleted++;
-        }
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $recordDeleted));
+        $recordEn = 0;
 
+        foreach ($collection->getItems() as $record) {
+            $record->setId($record->getId());
+            $record->setStatus('1');
+            $record->save();
+            $recordEn++;
+            $this->messageManager->addSuccess(__('Record getId %1: ', $record->getId()));
+            $this->messageManager->addSuccess(__('Record %1: ', $record));
+        }
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been enable.', $recordEn));
+        
         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
     }
 
@@ -60,6 +63,6 @@ class MassDelete extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Tutorial_HieuTran::row_data_delete');
+        return $this->_authorization->isAllowed('Tutorial_HieuTran::row_data_enable');
     }
 }
