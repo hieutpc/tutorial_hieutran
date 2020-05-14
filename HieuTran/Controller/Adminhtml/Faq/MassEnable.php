@@ -52,7 +52,7 @@ class MassEnable extends \Magento\Backend\App\Action
             $this->messageManager->addSuccess(__('Record getId %1: ', $record->getId()));
             $this->messageManager->addSuccess(__('Record %1: ', $record));
         }
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been enable.', $recordEn));
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been enabled.', $recordEn));
         
         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
     }

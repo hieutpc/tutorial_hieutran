@@ -29,7 +29,8 @@ class Index extends \Magento\Framework\View\Element\Template
             $pager = $this->getLayout()->createBlock(
                 'Magento\Theme\Block\Html\Pager',
                 'tutorial.faq.pager'
-            )->setAvailableLimit([5=>5,10=>10,15=>15])->setShowPerPage(true)->setCollection(
+                // )->setAvailableLimit([5=>5,10=>10,15=>15])->setShowPerPage(true)->setCollection(
+            )->setAvailableLimit([5 => 5, 10 => 10, 15 => 15])->setShowPerPage(true)->setCollection(
                 $this->getFaqCollection()
             );
             $this->setChild('pager', $pager);
