@@ -7,7 +7,7 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Tutorial\HieuTran\Model\ResourceModel\Faq\CollectionFactory;
 
-class MassEnable extends \Magento\Backend\App\Action
+class MassDisable extends \Magento\Backend\App\Action
 {
     /**
      * Massactions filter.​_
@@ -42,18 +42,18 @@ class MassEnable extends \Magento\Backend\App\Action
     public function execute()
     {
         $collection = $this->_filter->getCollection($this->_collectionFactory->create());
-        $recordEn = 0;
+        $recordDis = 0;
 
         foreach ($collection->getItems() as $record) {
             $record->setId($record->getId());
-            $record->setStatus('1');
+            $record->setStatus('0');
             $record->save();
-            $recordEn++;
+            $recordDis++;
             // $this->messageManager->addSuccess(__('Record getId %1: ', $record->getId()));
             // $this->messageManager->addSuccess(__('Record %1: ', $record));
         }
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been enabled.', $recordEn));
-        
+        $this->messageManager->addSuccess(__('A total of %1 record(s) have been disabled.', $recordDis));
+
         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
     }
 
@@ -63,6 +63,6 @@ class MassEnable extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Tutorial_HieuTran::row_data_enable');
+        return $this->_authorization->isAllowed('Tutorial_HieuTran::row_data_disable');
     }
 }

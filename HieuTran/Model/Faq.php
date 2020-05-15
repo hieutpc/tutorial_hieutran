@@ -62,7 +62,7 @@ class Faq extends \Magento\Framework\Model\AbstractModel implements FaqInterface
     }
     public function setStatus($status)
     {
-        return $this->setDate(self::STATUS, $status);
+        return $this->setData(self::STATUS, $status);
     }
 
     public function getCreateTime()
