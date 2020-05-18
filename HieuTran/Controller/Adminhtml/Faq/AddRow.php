@@ -45,6 +45,7 @@ class AddRow extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+        // $rowId = (int) $this->getRequest()->getParam('id');
         $rowId = (int) $this->getRequest()->getParam('id');
         $rowData = $this->faqFactory->create();
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */

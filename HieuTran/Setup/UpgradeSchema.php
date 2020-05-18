@@ -34,7 +34,8 @@ class UpgradeSchema implements UpgradeSchemaInterface
 
             $table = $installer->getConnection()->newTable(
                 $installer->getTable('faq_store')
-            )->addColumn(
+            )
+            ->addColumn(
                 'id',
                 \Magento\Framework\Db\Ddl\Table::TYPE_INTEGER,
                 null,
@@ -45,8 +46,9 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'unsigned' => true,
                 ],
                 'ID'
-            )->addColumn(
-                'faq_id',
+            )
+            ->addColumn(
+                'entity_id',
                 \Magento\Framework\Db\Ddl\Table::TYPE_INTEGER,
                 null,
                 [
@@ -54,7 +56,8 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                 ],
                 'FAQ ID'
-            )->addColumn(
+            )
+            ->addColumn(
                 'store_id',
                 \Magento\Framework\Db\Ddl\Table::TYPE_SMALLINT,
                 5,
@@ -63,19 +66,22 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'nullable' => false,
                 ],
                 'Store ID'
-            )->addForeignKey(
-                $setup->getFkName('faq_store', 'faq_id', 'tt_hieutran_records', 'entity_id'),
-                'faq_id',
+            )
+            ->addForeignKey(
+                $setup->getFkName('faq_store', 'entity_id', 'tt_hieutran_records', 'entity_id'),
+                'entity_id',
                 $setup->getTable('tt_hieutran_records'),
-                'faq_id',
+                'entity_id',
                 Table::ACTION_CASCADE
-            )->addForeignKey(
+            )
+            ->addForeignKey(
                 $setup->getFkName('faq_store', 'store_id', 'store', 'store_id'),
                 'store_id',
                 $setup->getTable('store'),
                 'store_id',
                 Table::ACTION_CASCADE
-            )->setComment('FAQ Store table');
+            )
+            ->setComment('FAQ Store table');
             $installer->getConnection()->createTable($table);
         }
         $installer->endSetup();
