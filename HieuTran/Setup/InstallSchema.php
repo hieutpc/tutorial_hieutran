@@ -82,16 +82,6 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 
             $installer->getConnection()->createTable($table);
 
-            // $installer->getConnection()->addIndex(
-            //     $installer->getTable('tutorial_hieutran_post'),
-            //     $setup->getIdxName(
-            //         $installer->getTable('tutorial_hieutran_post'),
-            //         ['title', 'description', 'image'],
-            //         \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
-            //     ),
-            //     ['title', 'description', 'image'],
-            //     \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
-            // );
         }
         $installer->endSetup();
     }

@@ -3,6 +3,7 @@
 namespace Tutorial\HieuTran\Controller\Adminhtml\Faq;
 
 use Magento\Framework\Controller\ResultFactory;
+use Tutorial\HieuTran\Logger\Logger;
 
 class AddRow extends \Magento\Backend\App\Action
 {
@@ -10,11 +11,13 @@ class AddRow extends \Magento\Backend\App\Action
      * @var \Magento\Framework\Registry
      */
     private $coreRegistry;
+    private $log;
 
     /**
      * @var \Tutorial\HieuTran\Model\FaqFactory
      */
     private $faqFactory;
+    private $_faqStoreFactory;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -24,11 +27,16 @@ class AddRow extends \Magento\Backend\App\Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Registry $coreRegistry,
-        \Tutorial\HieuTran\Model\FaqFactory $faqFactory
+        \Tutorial\HieuTran\Model\FaqFactory $faqFactory,
+        \Tutorial\HieuTran\Model\FaqStoreFactory $faqStoreFactory,
+        Logger $log
+
     ) {
         parent::__construct($context);
         $this->coreRegistry = $coreRegistry;
         $this->faqFactory = $faqFactory;
+        $this->log = $log;
+        $this->_faqStoreFactory = $faqStoreFactory;
     }
 
     /**

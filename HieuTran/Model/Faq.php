@@ -1,4 +1,5 @@
 <?php
+
 namespace Tutorial\HieuTran\Model;
 
 use Tutorial\HieuTran\Api\Data\FaqInterface;
@@ -83,40 +84,14 @@ class Faq extends \Magento\Framework\Model\AbstractModel implements FaqInterface
     {
         return $this->setData(self::UPDATE_TIME, $time);
     }
+
+    public function getObs()
+    {
+        return $this->getData(self::OBS_TITLE);
+    }
+
+    public function setObs($obs)
+    {
+        return $this->setData(self::OBS_TITLE, $obs);
+    }
 }
-
-
-
-
-
-// // old but works
-// class Faq extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
-// {
-//     const CACHE_TAG = 'tutorial_hieutran_faq';
-
-//     protected $_cacheTag = 'tutorial_hieutran_faq';
-
-//     protected $_eventPrefix = 'tutorial_hieutran_faq';
-
-//     protected function _construct()
-//     {
-//         $this->_init('Tutorial\HieuTran\Model\ResourceModel\Faq');
-//     }
-
-//     public function getIdentities()
-//     {
-//         return [self::CACHE_TAG . '_' . $this->getId()];
-//     }
-
-//     public function getDefaultValues()
-//     {
-//         $values = [];
-
-//         return $values;
-//     }
-// }
-
-
-// $_eventPrefix    - a prefix for events to be triggered
-// $_eventObject    - a object name when access in event
-// $_cacheTag       - a unique identifier for use within caching

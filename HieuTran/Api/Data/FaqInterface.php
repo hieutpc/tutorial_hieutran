@@ -15,10 +15,14 @@ interface FaqInterface
     const STATUS = 'status';
     // Bug1
     const CREATE_TIME = 'created_at';
-    const UPDATE_TIME = 'updated_at';   
+    const UPDATE_TIME = 'updated_at';
+    const OBS_TITLE = 'obs_title';
 
     public function getId();
     public function setId($entity_id);
+
+    public function getObs();
+    public function setObs($Obs);
 
     public function getTitle();
     public function setTitle($title);
@@ -38,87 +42,4 @@ interface FaqInterface
     public function getUpdateTime();
     public function setUpdateTime($time);
 
-    // /**
-    //  * Get EntityId.
-    //  *
-    //  * @return int
-    //  */
-    // public function getId();
-
-    // /**
-    //  * Set EntityId.
-    //  */
-    // public function setId($id);
-
-    // /**
-    //  * Get Title.
-    //  *
-    //  * @return varchar
-    //  */
-    // public function getTitle();
-
-    // /**
-    //  * Set Title.
-    //  */
-    // public function setTitle($title);
-
-    // /**
-    //  * Get Description.
-    //  *
-    //  * @return varchar
-    //  */
-    // public function getDes();
-
-    // /**
-    //  * Set Description.
-    //  */
-    // public function setDes($des);
-
-    // /**
-    //  * Get Image.
-    //  *
-    //  * @return varchar
-    //  */
-    // public function getImage();
-
-    // /**
-    //  * Set Image.
-    //  */
-    // public function setImage($image);
-
-    // /**
-    //  * Get Status.
-    //  *
-    //  * @return int
-    //  */
-    // public function getStatus();
-
-    // /**
-    //  * Set Status.
-    //  */
-    // public function setStatus($status);
-
-    // /**
-    //  * Get CreatedAt.
-    //  *
-    //  * @return varchar
-    //  */
-    // public function getCreateTime();
-
-    // /**
-    //  * Set CreatedAt.
-    //  */
-    // public function setCreateTime($time);
-
-    // /**
-    //  * Get UpdateTime.
-    //  *
-    //  * @return varchar
-    //  */
-    // public function getUpdateTime();
-
-    // /**
-    //  * Set UpdateTime.
-    //  */
-    // public function setUpdateTime($time);
 }

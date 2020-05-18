@@ -12,6 +12,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * @var \Magento\Store\Model\System\Store
      */
     protected $_systemStore;
+    protected $_store;
+    protected $_log;
 
     /**
      * @param \Magento\Backend\Block\Template\Context $context
@@ -25,9 +27,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
         \Tutorial\HieuTran\Model\Status $options,
+        \Tutorial\HieuTran\Model\Config\Source\Store $store,
+        \Tutorial\HieuTran\Logger\Logger $log,
         array $data = []
     ) {
+        $this->_store = $store;
         $this->_options = $options;
+        $this->_log = $log;
         $this->_wysiwygConfig = $wysiwygConfig;
         parent::__construct($context, $registry, $formFactory, $data);
     }
@@ -103,6 +109,20 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Status'),
                 'values' => $this->_options->getOptionArray(),
                 'class' => 'status',
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'store_id',
+            'select',
+            [
+                'name' => 'store_id',
+                'label' => __('Store ID'),
+                'id' => 'store_id',
+                'title' => __('Store ID'),
+                'values' => $this->_store->toOptionArray(),
+                'class' => 'store',
                 'required' => true,
             ]
         );

@@ -44,27 +44,3 @@ class Index extends \Magento\Backend\App\Action
         return $this->_authorization->isAllowed('Tutorial_HieuTran::faq_list');
     }
 }
-
-// class Index extends \Magento\Backend\App\Action
-// {
-//     // old Index class
-//     protected $resultPageFactory = false;
-
-//     public function __construct(
-//         \Magento\Backend\App\Action\Context $context,
-//         \Magento\Framework\View\Result\PageFactory $resultPageFactory
-//     ) {
-//         parent::__construct($context);
-//         $this->resultPageFactory = $resultPageFactory;
-//     }
-
-//     public function execute()
-//     {
-//         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-//         $resultPage = $this->resultPageFactory->create();
-//         $resultPage->getConfig()->getTitle()->prepend((__('Faqs')));
-
-//         return $resultPage;
-//     }
-
-// }
