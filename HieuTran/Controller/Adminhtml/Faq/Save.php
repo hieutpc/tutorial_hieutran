@@ -69,19 +69,19 @@ class Save extends \Magento\Backend\App\Action
             $faqData->setData('description', $data['description']);
             $faqData->setData('status', $data['status']);
             $store_id = $data['store_id'];
-            $this->log->info(' store id: ' . json_encode($store_id));
+            // $this->log->info(' store id: ' . json_encode($store_id));
 
             // edit row
-            if (isset($data['id'])) {
+            if (isset($data['entity_id'])) {
                 $obs_title[0] = 'edit';
-                $faqData->setId($data['id']);
+                $faqData->setId($data['entity_id']);
 
                 $collection = $this->_objectManager->create('\Tutorial\HieuTran\Model\ResourceModel\FaqStore\Collection');
                 $collection->addFieldToFilter('entity_id', ['eq' => $faqData['entity_id']]);
                 
                 $row = $collection->getData()[0];
-                $this->log->info('store data: ' . json_encode($row));
-                $this->log->info('row data: ' . $row['entity_id']);
+                // $this->log->info('store data: ' . json_encode($row));
+                // $this->log->info('row data: ' . $row['entity_id']);
                 $faqStoreData->setId($row['entity_id']);
             }
 
