@@ -5,7 +5,7 @@ namespace Tutorial\HieuTran\Api\Data;
 interface FaqStoreInterface
 {
     const ID = 'id';
-    const FAQ_ID = 'faq_id';
+    const FAQ_ID = 'entity_id';
     const STORE_ID = 'store_id';
 
     public function getId();

@@ -61,19 +61,24 @@ class Save extends \Magento\Backend\App\Action
             $obs_title[0] = 'install';
             $faqData = $this->faqFactory->create();
             $faqStoreData = $this->faqStoreFactory->create();
+            // 
+            // $this->log->info('faq store data: ' . json_encode($faqStoreData->getData()));
 
             //   set data for faq_table
             $faqData->setData('title', $data['title']);
             $faqData->setData('description', $data['description']);
             $faqData->setData('status', $data['status']);
             $store_id = $data['store_id'];
+            $this->log->info(' store id: ' . json_encode($store_id));
 
             // edit row
             if (isset($data['id'])) {
                 $obs_title[0] = 'edit';
                 $faqData->setId($data['id']);
+
                 $collection = $this->_objectManager->create('\Tutorial\HieuTran\Model\ResourceModel\FaqStore\Collection');
                 $collection->addFieldToFilter('entity_id', ['eq' => $faqData['entity_id']]);
+                
                 $row = $collection->getData()[0];
                 $this->log->info('store data: ' . json_encode($row));
                 $this->log->info('row data: ' . $row['entity_id']);
@@ -85,6 +90,7 @@ class Save extends \Magento\Backend\App\Action
 
             // setdata for tt_hieutran_records
             $faqStoreData->setFAQ_Id($faqData->getData('entity_id'));
+            // $faqStoreData->setStore_Id((int)$store_id);
             $faqStoreData->setStore_Id($store_id);
             $faqStoreData->save();
 
